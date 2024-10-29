@@ -83,13 +83,43 @@
         android:orientation="vertical"
         android:gravity="center_horizontal"
         >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Date:"
+            android:layout_marginTop="15dp"
+            />
         <EditText
-            android:id="@+id/editTextDate"
+            android:id="@+id/editTextStartDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Select Start Date"
             android:inputType="none"
             android:focusable="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="End Date:"
+            android:layout_marginTop="15dp"
+            />
+        <EditText
+            android:id="@+id/editTextEndDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Select End Date"
+            android:inputType="none"
+            android:focusable="false" />
+
+        <Button
+            android:id="@+id/submitRequestButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit Request"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/blue"
+            android:layout_marginTop="20dp" />
+
     </LinearLayout>
 
     </LinearLayout>

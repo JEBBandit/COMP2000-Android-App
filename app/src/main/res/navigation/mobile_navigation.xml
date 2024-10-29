@@ -34,5 +34,22 @@
         android:name="com.example.comp2000app.ui.holidays.request.RequestHolidayFragment"
         android:label="Request Holiday"
         tools:layout="@layout/fragment_request_holiday"
-        />
+        >
+        <action
+            android:id="@+id/action_requestHolidayFragment_to_confirmationFragment"
+            app:destination="@id/confirmationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/confirmationFragment"
+        android:name="com.example.comp2000app.ui.holidays.request.confirmation.HolidayRequestConfirmationFragment"
+        android:label="Confirmation"
+        tools:layout="@layout/fragment_holiday_request_confirmation">
+        <argument
+            android:name="startDate"
+            app:argType="string" />
+        <argument
+            android:name="endDate"
+            app:argType="string" />
+    </fragment>
 </navigation>
