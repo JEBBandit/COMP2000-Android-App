@@ -1,62 +1,107 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
     android:padding="16dp">
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:orientation="horizontal"
-        >
-    <ImageView
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_gravity="start"
-        android:contentDescription="@string/nav_header_desc"
-        android:src="@mipmap/leslie_warren_headshot_fg_round" />
+        android:padding="20dp"
+        app:cardCornerRadius="7dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_margin="20dp"
+            android:paddingStart="30dp"
+            android:paddingEnd="30dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="15dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
             >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/name_leslie_warren"
-            android:textColor="@color/black"
-            android:layout_marginTop="10dp"
-            android:textSize="22sp"
-            />
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_gravity="start"
+            android:contentDescription="@string/nav_header_desc"
+            android:src="@mipmap/leslie_warren_headshot_fg_round" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/string_full_stack_developer"
-            android:textSize="14sp"
-            />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="15dp"
+                >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/name_leslie_warren"
+                android:textColor="@color/black"
+                android:layout_marginTop="10dp"
+                android:textSize="22sp"
+                />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/string_full_stack_developer"
+                android:textSize="14sp"
+                />
+
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-    <TextView
-        android:id="@+id/confirmationTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        android:text="Your request has been submitted!" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="Booking Overview: - Pending"
+            />
 
-    <Button
-        android:id="@+id/holidayRequestConfirmationToHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/blue"
-        android:layout_marginTop="10dp"
-        android:text="Home"
-        />
+        <TextView
+            android:id="@+id/confirmationTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:text="Holiday request submitted: \nStart Date: 00/00/00 \nEnd Date: 00/00/00 " />
+
+        <TextView
+            android:id="@+id/numberDaysOff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_gravity="start"
+            android:textColor="@color/black"
+            android:text="0 Days Off"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_gravity="start"
+            android:text="18 Days Entitlement Left"
+            />
+
+        <Button
+            android:id="@+id/holidayRequestConfirmationToHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
+            android:layout_marginTop="20dp"
+            android:text="Home"
+            />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </LinearLayout>
