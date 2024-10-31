@@ -98,20 +98,21 @@ public class HolidaysFragment extends Fragment {
 
 
         // creating references to the holiday request related buttons
-        Button amendHolidayButtonOne = view.findViewById(R.id.holidayRequestOneAmend);
-        Button amendHolidayButtonTwo = view.findViewById(R.id.holidayRequestTwoAmend);
+//        Button amendHolidayButtonOne = view.findViewById(R.id.holidayRequestOneAmend);
+//        Button amendHolidayButtonTwo = view.findViewById(R.id.holidayRequestTwoAmend);
 
-        Button cancelHolidayButtonOne = view.findViewById(R.id.holidayRequestOneCancel);
-        Button cancelHolidayButtonTwo = view.findViewById(R.id.holidayRequestTwoCancel);
+//        Button cancelHolidayButtonOne = view.findViewById(R.id.holidayRequestOneCancel);
+//        Button cancelHolidayButtonTwo = view.findViewById(R.id.holidayRequestTwoCancel);
 
 
         // creating onClick listeners for the amendments of holiday requests
-        amendHolidayButtonOne.setOnClickListener(v -> amendHolidayBooking(holidayRequestOne));
-        amendHolidayButtonTwo.setOnClickListener(v -> amendHolidayBooking(holidayRequestTwo));
+//        amendHolidayButtonOne.setOnClickListener(v -> amendHolidayBooking(holidayRequestOne, view));
+//        amendHolidayButtonTwo.setOnClickListener(v -> amendHolidayBooking(holidayRequestTwo, view));
+
 
         // creating onClick listeners for the cancellations of holiday requests
-        cancelHolidayButtonOne.setOnClickListener(v -> cancelHolidayBooking(holidayRequestOne));
-        cancelHolidayButtonTwo.setOnClickListener(v -> cancelHolidayBooking(holidayRequestTwo));
+//        cancelHolidayButtonOne.setOnClickListener(v -> cancelHolidayBooking(holidayRequestOne));
+//        cancelHolidayButtonTwo.setOnClickListener(v -> cancelHolidayBooking(holidayRequestTwo));
 
 
 
@@ -120,6 +121,9 @@ public class HolidaysFragment extends Fragment {
 
         binding = FragmentHolidaysBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        binding.holidayRequestOneAmend.setOnClickListener(v -> amendHolidayBooking(holidayRequestOne, v));
+        binding.holidayRequestTwoAmend.setOnClickListener(v -> amendHolidayBooking(holidayRequestTwo, v));
 
         final TextView textView = binding.textSlideshow;
         slideshowViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
@@ -134,9 +138,13 @@ public class HolidaysFragment extends Fragment {
     }
 
     // function to handle the amendments of holiday bookings
-    private void amendHolidayBooking(HolidayBooking bookingObject) {
-        debugTextView.setText(bookingObject.exportAsString());
+    private void amendHolidayBooking(HolidayBooking bookingObject, View view) {
+        Log.d("Navigation", "Amend Holiday Button clicked");
+        Bundle bundle = bookingObject.deconstruct();
+        NavController navController = Navigation.findNavController(view);
+        navController.navigate(R.id.action_holidaysFragment_to_amendFragment, bundle);
     }
+
 
     // function to handle the cancellation of holiday bookings
     private void cancelHolidayBooking(HolidayBooking bookingObject) {

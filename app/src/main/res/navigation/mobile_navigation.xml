@@ -18,6 +18,13 @@
         tools:layout="@layout/fragment_profile" />
 
     <fragment
+        android:id="@+id/amend_holidays"
+        android:name="com.example.comp2000app.ui.holidays.amend.AmendHolidayRequestFragment"
+        android:label="Amend Holiday Booking"
+        tools:layout="@layout/fragment_amend_holiday_request"
+        />
+
+    <fragment
         android:id="@+id/nav_slideshow"
         android:name="com.example.comp2000app.ui.holidays.HolidaysFragment"
         android:label="@string/menu_slideshow"
@@ -26,6 +33,9 @@
         <action
             android:id="@+id/action_holidaysFragment_to_requestHolidayFragment"
             app:destination="@id/request_holiday" />
+
+        <action android:id="@+id/action_holidaysFragment_to_amendFragment"
+            app:destination="@+id/amend_holidays" />
 
     </fragment>
 

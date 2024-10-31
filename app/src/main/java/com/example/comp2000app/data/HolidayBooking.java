@@ -1,4 +1,6 @@
 package com.example.comp2000app.data;
+import android.os.Bundle;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 public class HolidayBooking {
@@ -80,6 +82,11 @@ public class HolidayBooking {
         }
     }
 
+    // return the approval status
+    public ApprovalStatus getApprovalStatus() {
+        return approvalStatus;
+    }
+
     public Date getRejectionDate(){
         if (this.isRejected()){
             return this.rejectionDate;
@@ -150,6 +157,40 @@ public class HolidayBooking {
                 '}';
     }
 
+    // Desconstruct method created for easier traversal between pages without serialisation
+    public Bundle deconstruct() {
+        Bundle bundle = new Bundle();
+        bundle.putLong("startDate", startDate != null ? startDate.getTime() : -1);
+        bundle.putLong("endDate", endDate != null ? endDate.getTime() : -1);
+        bundle.putLong("requestDate", requestDate != null ? requestDate.getTime() : -1);
+        bundle.putLong("approvalDate", approvalDate != null ? approvalDate.getTime() : -1);
+        bundle.putLong("rejectionDate", rejectionDate != null ? rejectionDate.getTime() : -1);
+        bundle.putLong("cancellationDate", cancellationDate != null ? cancellationDate.getTime() : -1);
+        bundle.putString("approvalStatus", approvalStatus != null ? approvalStatus.name() : ApprovalStatus.PENDING.name());
+        return bundle;
+    }
+
+    // reconstruct method for reconstructing a deconstructed HolidayBooking object
+    public static HolidayBooking reconstruct(Bundle bundle) {
+        HolidayBooking booking = new HolidayBooking();
+        long startDateMillis = bundle.getLong("startDate", -1);
+        long endDateMillis = bundle.getLong("endDate", -1);
+        long requestDateMillis = bundle.getLong("requestDate", -1);
+        long approvalDateMillis = bundle.getLong("approvalDate", -1);
+        long rejectionDateMillis = bundle.getLong("rejectionDate", -1);
+        long cancellationDateMillis = bundle.getLong("cancellationDate", -1);
+
+        booking.startDate = (startDateMillis != -1) ? new Date(startDateMillis) : null;
+        booking.endDate = (endDateMillis != -1) ? new Date(endDateMillis) : null;
+        booking.requestDate = (requestDateMillis != -1) ? new Date(requestDateMillis) : null;
+        booking.approvalDate = (approvalDateMillis != -1) ? new Date(approvalDateMillis) : null;
+        booking.rejectionDate = (rejectionDateMillis != -1) ? new Date(rejectionDateMillis) : null;
+        booking.cancellationDate = (cancellationDateMillis != -1) ? new Date(cancellationDateMillis) : null;
+        booking.approvalStatus = ApprovalStatus.valueOf(bundle.getString("approvalStatus", ApprovalStatus.PENDING.name()));
+
+        return booking;
+    }
+
 
 
     // class constructor to construct an object
@@ -173,6 +214,11 @@ public class HolidayBooking {
         } else if (approvalStatus == ApprovalStatus.REJECTED) {
             this.rejectionDate = new Date(); // assuming the rejection date is the current date
         }
+    }
+
+    // No-argument constructor - allows reconstruction method to work
+    public HolidayBooking() {
+        this.approvalStatus = ApprovalStatus.PENDING;
     }
 
 }
